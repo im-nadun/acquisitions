@@ -1,0 +1,47 @@
+# Dependencies
+node_modules
+npm-debug.log
+
+# Environment files (will be injected at runtime)
+.env.local
+.env.*.local
+
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Logs
+logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Neon Local data
+.neon_local
+
+# Documentation
+*.md
+!README.md
+
+# Test files
+test
+tests
+*.test.js
+*.spec.js
+
+# Exclude dev script but include docker-entrypoint
+scripts/dev.sh
+!scripts/docker-entrypoint.sh

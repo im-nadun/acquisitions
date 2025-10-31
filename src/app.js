@@ -6,7 +6,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import authRoutes from '#routes/auth.routes.js';
 import { authenticate, authorize } from '#middleware/auth.middleware.js';
-import secutiryMiddleware from '#middleware/security.middlware.js'
+import securityMiddleware from '#middleware/security.middleware.js';
 
 const app = express();
 

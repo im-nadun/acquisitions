@@ -1,8 +1,5 @@
 import arcjet, { shield, detectBot, slidingWindow } from "@arcjet/node";
 
-const app = express();
-const port = 3000;
-
 const aj = arcjet({
   
   key: process.env.ARCJET_KEY,
@@ -14,7 +11,7 @@ const aj = arcjet({
       mode: "LIVE", // Blocks requests. Use "DRY_RUN" to log only
       // Block all bots except the following
       allow: [
-        "CATEGORY:SEARCH_ENGINE", // Google, Bing, etc
+        "CATEGORY:SEARCH_ENGINE", // Google, Bing,etc
         // Uncomment to allow these other common bot categories
         // See the full list at https://arcjet.com/bot-list
         //"CATEGORY:MONITOR", // Uptime monitoring services
@@ -26,7 +23,6 @@ const aj = arcjet({
             interval:'2s',
             max: 5
     })
-    }
   ],
 });
 

@@ -1,2 +1,24 @@
+# Dependencies
 node_modules
+
+# Environment files
+.env
 .env.*
+!.env.example
+
+# Neon Local data
+.neon_local/
+
+# Logs
+logs/
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

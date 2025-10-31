@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0366cfd5-ec38-421a-965f-dc2d6ab30d69" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/prod.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/combined.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/combined.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/arcjet.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/arcjet.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/database.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,11 +53,16 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Nadun Vidusha/WebstormProjects/acquisitions/src/main.js&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Nadun Vidusha\\WebstormProjects\\acquisitions\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\JetBrains\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="clear" />
+    </option>
+  </component>
   <component name="RunManager">
     <configuration name="localhost3000" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost3000">
       <method v="2" />
@@ -82,7 +91,10 @@
       <workItem from="1761557648674" duration="2781000" />
       <workItem from="1761630100419" duration="2254000" />
       <workItem from="1761666489662" duration="2428000" />
-      <workItem from="1761817853008" duration="13250000" />
+      <workItem from="1761817853008" duration="17318000" />
+      <workItem from="1761905655853" duration="73000" />
+      <workItem from="1761905739350" duration="204000" />
+      <workItem from="1761905957443" duration="5551000" />
     </task>
     <servers />
   </component>
