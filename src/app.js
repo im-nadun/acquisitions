@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import authRoutes from '#routes/auth.routes.js';
 import { authenticate, authorize } from '#middleware/auth.middleware.js';
 import securityMiddleware from '#middleware/security.middleware.js';
+import usersRoutes from '#routes/users.routes.js';
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.get('/api',(req, res) => {
 
 // Auth routes (public and protected)
 app.use('/api/auth', authRoutes);
+app.use('/api/users', usersRoutes);
 
 // Example: Protected route (requires authentication)
 app.get('/api/profile', authenticate, (req, res) => {
