@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "imports": {
+    "#src/*": "./src/*",
     "#config/*": "./src/config/*",
     "#controllers/*": "./src/controllers/*",
     "#middleware/*": "./src/middleware/*",
@@ -25,7 +26,8 @@
     "db:studio": "drizzle-kit studio",
     "db:push": "drizzle-kit push",
     "dev:docker": "bash ./scripts/dev.sh",
-    "prod:docker": "bash ./scripts/prod.sh"
+    "prod:docker": "bash ./scripts/prod.sh",
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
@@ -61,7 +63,9 @@
     "eslint": "^9.38.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
+    "jest": "^30.2.0",
     "prettier": "^3.6.2",
-    "shelljs": "^0.10.0"
+    "shelljs": "^0.10.0",
+    "supertest": "^7.1.4"
   }
 }
