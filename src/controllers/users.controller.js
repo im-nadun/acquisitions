@@ -3,9 +3,12 @@ import {
   getAllUsers,
   getUserById as getUserByIdService,
   updateUser as updateUserService,
-  deleteUser as deleteUserService
-} from "#services/users.service.js";
-import { userIdSchema, updateUserSchema } from '#validations/users.validation.js';
+  deleteUser as deleteUserService,
+} from '#services/users.service.js';
+import {
+  userIdSchema,
+  updateUserSchema,
+} from '#validations/users.validation.js';
 
 // Get all users
 export const fetchAllUsers = async (req, res, next) => {
@@ -73,7 +76,9 @@ export const updateUser = async (req, res, next) => {
     if (authenticatedUserId !== id) {
       // Unless they're an admin
       if (authenticatedUserRole !== 'admin') {
-        logger.warn(`User ${authenticatedUserId} attempted to update user ${id}`);
+        logger.warn(
+          `User ${authenticatedUserId} attempted to update user ${id}`
+        );
         return res.status(403).json({
           message: 'Forbidden: You can only update your own information',
         });
@@ -82,7 +87,9 @@ export const updateUser = async (req, res, next) => {
 
     // Only admins can change user roles
     if (validatedBody.role && authenticatedUserRole !== 'admin') {
-      logger.warn(`Non-admin user ${authenticatedUserId} attempted to change role`);
+      logger.warn(
+        `Non-admin user ${authenticatedUserId} attempted to change role`
+      );
       return res.status(403).json({
         message: 'Forbidden: Only administrators can change user roles',
       });

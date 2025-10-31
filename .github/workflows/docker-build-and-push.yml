@@ -5,6 +5,15 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      tag_suffix:
+        description: 'Additional tag suffix(optional)'
+        required: false
+        type: string
+
+env:
+  REGISTRY: docker.io
+  IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/kubernetes-demo-api
 
 jobs:
   build-and-push:

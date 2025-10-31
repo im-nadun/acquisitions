@@ -51,15 +51,15 @@ jobs:
         run: |
           echo "## 🧪 Test Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           if [ "${{ steps.test.outcome }}" == "success" ]; then
             echo "### ✅ All tests passed!" >> $GITHUB_STEP_SUMMARY
           else
             echo "### ❌ Some tests failed" >> $GITHUB_STEP_SUMMARY
           fi
-          
+
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           # Check if coverage summary exists
           if [ -f coverage/coverage-summary.json ]; then
             echo "### 📊 Coverage Summary" >> $GITHUB_STEP_SUMMARY
@@ -81,7 +81,7 @@ jobs:
           else
             echo "Coverage report not available" >> $GITHUB_STEP_SUMMARY
           fi
-          
+
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "📦 Coverage reports uploaded as artifacts (retention: 30 days)" >> $GITHUB_STEP_SUMMARY
 

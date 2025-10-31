@@ -1,6 +1,7 @@
 # User CRUD Implementation Summary
 
 ## Overview
+
 Successfully implemented complete CRUD (Create, Read, Update, Delete) operations for User management in the Express.js application.
 
 ## Files Created/Modified
@@ -12,7 +13,6 @@ Created Zod validation schemas for user operations:
 - **`userIdSchema`**: Validates user ID from URL parameters
   - Ensures ID is a valid number
   - Automatically transforms string to number
-  
 - **`updateUserSchema`**: Validates update user requests
   - All fields optional (name, email, password, role)
   - Email format validation
@@ -25,22 +25,26 @@ Created Zod validation schemas for user operations:
 Implemented four service functions:
 
 #### `getAllUsers()`
+
 - Retrieves all users from database
 - Returns user info without passwords
 - Includes timestamps (createdAt, updatedAt)
 
 #### `getUserById(id)`
+
 - Retrieves single user by ID
 - Returns 404 error if user not found
 - Excludes password from response
 
 #### `updateUser(id, updates)`
+
 - Checks if user exists (throws 404 if not)
 - Hashes password if being updated
 - Updates timestamp automatically
 - Returns updated user info
 
 #### `deleteUser(id)`
+
 - Checks if user exists (throws 404 if not)
 - Deletes user from database
 - Returns deleted user info (id, email, name)
@@ -50,16 +54,19 @@ Implemented four service functions:
 Implemented four controller functions with proper validation and authorization:
 
 #### `fetchAllUsers(req, res, next)`
+
 - Retrieves all users
 - Includes proper error handling and logging
 
 #### `getUserById(req, res, next)`
+
 - Validates ID parameter
 - Retrieves user by ID
 - Returns 400 for validation errors
 - Returns 404 if user not found
 
 #### `updateUser(req, res, next)`
+
 - Validates ID and request body
 - **Authorization checks**:
   - Users can only update their own information
@@ -70,6 +77,7 @@ Implemented four controller functions with proper validation and authorization:
 - Returns 404 if user not found
 
 #### `deleteUser(req, res, next)`
+
 - Validates ID parameter
 - **Authorization checks**:
   - Users can delete their own account
@@ -89,12 +97,14 @@ Implemented four controller functions with proper validation and authorization:
 ## Authorization Rules
 
 ### Update User
+
 - ✅ Users can update their own profile (except role)
 - ✅ Admins can update any user's profile
 - ✅ Only admins can change user roles
 - ❌ Users cannot update other users' profiles
 
 ### Delete User
+
 - ✅ Users can delete their own account
 - ✅ Admins can delete any account
 - ❌ Users cannot delete other users' accounts
@@ -102,19 +112,25 @@ Implemented four controller functions with proper validation and authorization:
 ## API Response Format
 
 ### Success Responses
+
 ```json
 {
   "message": "Success message",
-  "user": { /* user object */ },
-  "count": 5  // for list operations
+  "user": {
+    /* user object */
+  },
+  "count": 5 // for list operations
 }
 ```
 
 ### Error Responses
+
 ```json
 {
   "message": "Error message",
-  "errors": [ /* validation errors if applicable */ ]
+  "errors": [
+    /* validation errors if applicable */
+  ]
 }
 ```
 
@@ -138,24 +154,25 @@ Implemented four controller functions with proper validation and authorization:
 To complete the implementation, you should:
 
 1. **Create/Update Routes** (`src/routes/users.routes.js`):
+
    ```javascript
    import express from 'express';
-   import { 
-     fetchAllUsers, 
-     getUserById, 
-     updateUser, 
-     deleteUser 
+   import {
+     fetchAllUsers,
+     getUserById,
+     updateUser,
+     deleteUser,
    } from '#controllers/users.controller.js';
    import { authenticate } from '#middleware/auth.middleware.js';
-   
+
    const router = express.Router();
-   
+
    router.get('/', authenticate, fetchAllUsers);
    router.get('/:id', authenticate, getUserById);
    router.put('/:id', authenticate, updateUser);
    router.patch('/:id', authenticate, updateUser);
    router.delete('/:id', authenticate, deleteUser);
-   
+
    export default router;
    ```
 
@@ -170,18 +187,21 @@ To complete the implementation, you should:
 ## Example Usage
 
 ### Get All Users
+
 ```bash
 GET /api/users
 Authorization: Bearer <token>
 ```
 
 ### Get User by ID
+
 ```bash
 GET /api/users/123
 Authorization: Bearer <token>
 ```
 
 ### Update User
+
 ```bash
 PUT /api/users/123
 Authorization: Bearer <token>
@@ -194,6 +214,7 @@ Content-Type: application/json
 ```
 
 ### Delete User
+
 ```bash
 DELETE /api/users/123
 Authorization: Bearer <token>

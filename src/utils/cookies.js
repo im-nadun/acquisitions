@@ -4,7 +4,7 @@ export const cookies = {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
-    maxAge: 15 * 60 * 1000 // 15 minutes
+    maxAge: 15 * 60 * 1000, // 15 minutes
   }),
 
   //  Set a cookie
@@ -20,5 +20,5 @@ export const cookies = {
   //  Get a cookie
   get: (req, name) => {
     return req.cookies[name];
-  }
+  },
 };

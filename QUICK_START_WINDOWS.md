@@ -12,6 +12,7 @@ This is a simplified guide for getting started with Docker on Windows.
 ### Step 1: Configure Neon Credentials
 
 1. Copy the development environment template:
+
 ```powershell
 Copy-Item .env.development .env
 ```
@@ -27,6 +28,7 @@ docker-compose -f docker-compose.dev.yml up
 ```
 
 That's it! Your app is now running with Neon Local at:
+
 - **App:** http://localhost:3000
 - **Database:** Ephemeral branch (auto-created)
 
@@ -43,11 +45,13 @@ docker-compose -f docker-compose.dev.yml down
 ### Step 1: Configure Production Database
 
 1. Copy production template:
+
 ```powershell
 Copy-Item .env.production .env
 ```
 
 2. Edit `.env` and set your Neon Cloud database URL:
+
 ```env
 DATABASE_URL=postgresql://user:password@ep-xxxxx.neon.tech/dbname?sslmode=require
 ```
@@ -94,14 +98,17 @@ docker-compose -f docker-compose.dev.yml exec app sh
 ## Troubleshooting
 
 ### Docker Desktop not starting
+
 - Open Docker Desktop manually from Start Menu
 - Wait for "Docker Desktop is running" notification
 
 ### Port 5432 already in use
+
 - Stop any local PostgreSQL services
 - Or change port in `docker-compose.dev.yml`: `- '5433:5432'`
 
 ### Cannot connect to database
+
 - Ensure Docker containers are running: `docker ps`
 - Check logs: `docker-compose -f docker-compose.dev.yml logs neon-local`
 

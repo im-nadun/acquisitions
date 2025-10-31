@@ -15,6 +15,7 @@ Complete guide for running the Acquisitions application in Docker with Neon Data
 ## 🎯 Overview
 
 This application uses:
+
 - **Development**: Neon Local (ephemeral database branches for local testing)
 - **Production**: Neon Cloud Database (managed PostgreSQL)
 - **Multi-stage Docker builds** for optimized images
@@ -33,8 +34,9 @@ This application uses:
 ### Setup Steps
 
 1. **Configure environment variables**
-   
+
    Copy and update `.env.development` with your Neon credentials:
+
    ```bash
    # Already configured in .env.development
    NEON_API_KEY=your_api_key_here
@@ -43,12 +45,13 @@ This application uses:
    ```
 
 2. **Start development environment**
-   
+
    ```bash
    npm run dev:docker
    ```
 
    Or manually:
+
    ```bash
    docker compose -f docker-compose.dev.yml up --build
    ```
@@ -61,16 +64,19 @@ This application uses:
 ### Development Features
 
 ✅ **Neon Local Integration**
+
 - Automatically creates ephemeral database branches
 - Branches tied to your Git branch (optional)
 - Auto-cleanup on container shutdown (configurable)
 
 ✅ **Hot Reload**
+
 - Source code mounted as volume
 - Changes reflect immediately without rebuild
 - Node.js `--watch` mode enabled
 
 ✅ **Database Migrations**
+
 - Automatically run on container startup
 - Using Drizzle ORM
 - Safe failure handling (continues if migrations fail)
@@ -100,8 +106,9 @@ docker compose -f docker-compose.dev.yml ps
 ### Setup Steps
 
 1. **Configure production environment**
-   
+
    Update `.env.production` with your Neon Cloud connection string:
+
    ```bash
    # Get from: https://console.neon.tech/app/projects -> Your Project -> Connection Details
    DATABASE_URL=postgresql://user:password@your-project.neon.tech/dbname?sslmode=require
@@ -110,19 +117,20 @@ docker compose -f docker-compose.dev.yml ps
    ⚠️ **IMPORTANT**: In real production, use secrets management (AWS Secrets Manager, Azure Key Vault, etc.)
 
 2. **Build and run production**
-   
+
    ```bash
    docker compose -f docker-compose.prod.yml up --build -d
    ```
 
 3. **Verify deployment**
+
    ```bash
    # Check container status
    docker compose -f docker-compose.prod.yml ps
-   
+
    # Check logs
    docker compose -f docker-compose.prod.yml logs -f
-   
+
    # Test health endpoint
    curl http://localhost:3000/health
    ```
@@ -130,16 +138,19 @@ docker compose -f docker-compose.dev.yml ps
 ### Production Features
 
 ✅ **Optimized Build**
+
 - Multi-stage build with production dependencies only
 - Smaller image size
 - No dev dependencies included
 
 ✅ **Health Checks**
+
 - Automatic health monitoring
 - Restart on failure
 - Integration with orchestration platforms
 
 ✅ **Security**
+
 - NODE_ENV=production
 - Minimal attack surface
 - No source code mounting
@@ -164,26 +175,26 @@ docker compose -f docker-compose.prod.yml up -d --scale app=3
 
 ### Development (`.env.development`)
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `NODE_ENV` | Environment mode | `development` |
-| `PORT` | Application port | `3000` |
-| `LOG_LEVEL` | Logging verbosity | `debug` |
-| `DATABASE_URL` | Database connection | `postgres://neon:npg@neon-local:5432/neondb` |
-| `NEON_API_KEY` | Neon API key | `napi_...` |
-| `NEON_PROJECT_ID` | Neon project ID | `round-wind-...` |
-| `PARENT_BRANCH_ID` | Branch to fork from | `br-jolly-block-...` |
-| `DELETE_BRANCH` | Auto-delete branches | `true` |
+| Variable           | Description          | Example                                      |
+| ------------------ | -------------------- | -------------------------------------------- |
+| `NODE_ENV`         | Environment mode     | `development`                                |
+| `PORT`             | Application port     | `3000`                                       |
+| `LOG_LEVEL`        | Logging verbosity    | `debug`                                      |
+| `DATABASE_URL`     | Database connection  | `postgres://neon:npg@neon-local:5432/neondb` |
+| `NEON_API_KEY`     | Neon API key         | `napi_...`                                   |
+| `NEON_PROJECT_ID`  | Neon project ID      | `round-wind-...`                             |
+| `PARENT_BRANCH_ID` | Branch to fork from  | `br-jolly-block-...`                         |
+| `DELETE_BRANCH`    | Auto-delete branches | `true`                                       |
 
 ### Production (`.env.production`)
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `NODE_ENV` | Environment mode | `production` |
-| `PORT` | Application port | `3000` |
-| `LOG_LEVEL` | Logging verbosity | `info` |
-| `DATABASE_URL` | Neon Cloud connection | `postgresql://...neon.tech/dbname` |
-| `RUN_MIGRATIONS` | Run migrations on startup | `true` (optional) |
+| Variable         | Description               | Example                            |
+| ---------------- | ------------------------- | ---------------------------------- |
+| `NODE_ENV`       | Environment mode          | `production`                       |
+| `PORT`           | Application port          | `3000`                             |
+| `LOG_LEVEL`      | Logging verbosity         | `info`                             |
+| `DATABASE_URL`   | Neon Cloud connection     | `postgresql://...neon.tech/dbname` |
+| `RUN_MIGRATIONS` | Run migrations on startup | `true` (optional)                  |
 
 ## 🔍 Troubleshooting
 

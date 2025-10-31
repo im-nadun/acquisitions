@@ -12,7 +12,7 @@ export const authenticate = (req, res, next) => {
     if (!token) {
       return res.status(401).json({
         error: 'Authentication required',
-        message: 'No token provided'
+        message: 'No token provided',
       });
     }
 
@@ -28,7 +28,7 @@ export const authenticate = (req, res, next) => {
     logger.error('Authentication error', e);
     return res.status(401).json({
       error: 'Invalid token',
-      message: 'Authentication failed'
+      message: 'Authentication failed',
     });
   }
 };
@@ -40,7 +40,7 @@ export const authorize = (...allowedRoles) => {
     if (!req.user) {
       return res.status(401).json({
         error: 'Authentication required',
-        message: 'User not authenticated'
+        message: 'User not authenticated',
       });
     }
 
@@ -48,7 +48,7 @@ export const authorize = (...allowedRoles) => {
     if (!allowedRoles.includes(req.user.role)) {
       return res.status(403).json({
         error: 'Access denied',
-        message: 'Insufficient permissions'
+        message: 'Insufficient permissions',
       });
     }
 

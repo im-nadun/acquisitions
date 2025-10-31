@@ -5,9 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0366cfd5-ec38-421a-965f-dc2d6ab30d69" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/docker-build-and-push.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/docker-build-and-push.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/tests.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/acquisitions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/acquisitions.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierignore" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_GUIDE.md" beforeDir="false" afterPath="$PROJECT_DIR$/API_GUIDE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGES_SUMMARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGES_SUMMARY.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DOCKER_README.md" beforeDir="false" afterPath="$PROJECT_DIR$/DOCKER_README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DOCKER_SETUP.md" beforeDir="false" afterPath="$PROJECT_DIR$/DOCKER_SETUP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QUICK_START_DOCKER.md" beforeDir="false" afterPath="$PROJECT_DIR$/QUICK_START_DOCKER.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QUICK_START_WINDOWS.md" beforeDir="false" afterPath="$PROJECT_DIR$/QUICK_START_WINDOWS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER_CRUD_IMPLEMENTATION.md" beforeDir="false" afterPath="$PROJECT_DIR$/USER_CRUD_IMPLEMENTATION.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WARP.md" beforeDir="false" afterPath="$PROJECT_DIR$/WARP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/drizzle.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/combined.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/combined.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error.lg" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error.lg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/docker-entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/docker-entrypoint.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/arcjet.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/arcjet.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/logger.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/logger.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/auth.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/users.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/users.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware/auth.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware/auth.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware/security.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware/security.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/users.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/users.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/users.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/users.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/cookies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/cookies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/format.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/format.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/jwt.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/jwt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validations/users.validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/validations/users.validation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/app.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/app.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +131,7 @@
       <workItem from="1761905655853" duration="73000" />
       <workItem from="1761905739350" duration="204000" />
       <workItem from="1761905957443" duration="11268000" />
+      <workItem from="1761928772510" duration="648000" />
     </task>
     <servers />
   </component>

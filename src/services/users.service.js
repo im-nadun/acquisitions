@@ -1,5 +1,5 @@
 import logger from '#config/logger.js';
-import { db } from "#config/database.js";
+import { db } from '#config/database.js';
 import { users } from '#models/user.model.js';
 import { eq } from 'drizzle-orm';
 import bcrypt from 'bcrypt';
@@ -7,14 +7,16 @@ import bcrypt from 'bcrypt';
 // Get all users
 export const getAllUsers = async () => {
   try {
-    return await db.select({
-      id: users.id,
-      email: users.email,
-      name: users.name,
-      role: users.role,
-      createdAt: users.created_at,
-      updatedAt: users.updated_at,
-    }).from(users);
+    return await db
+      .select({
+        id: users.id,
+        email: users.email,
+        name: users.name,
+        role: users.role,
+        createdAt: users.created_at,
+        updatedAt: users.updated_at,
+      })
+      .from(users);
   } catch (e) {
     logger.error('Error getting users', e);
     throw e;
@@ -22,19 +24,20 @@ export const getAllUsers = async () => {
 };
 
 // Get user by ID
-export const getUserById = async (id) => {
+export const getUserById = async id => {
   try {
-    const user = await db.select({
-      id: users.id,
-      email: users.email,
-      name: users.name,
-      role: users.role,
-      createdAt: users.created_at,
-      updatedAt: users.updated_at,
-    })
-    .from(users)
-    .where(eq(users.id, id))
-    .limit(1);
+    const user = await db
+      .select({
+        id: users.id,
+        email: users.email,
+        name: users.name,
+        role: users.role,
+        createdAt: users.created_at,
+        updatedAt: users.updated_at,
+      })
+      .from(users)
+      .where(eq(users.id, id))
+      .limit(1);
 
     if (!user || user.length === 0) {
       const error = new Error('User not found');
@@ -53,7 +56,8 @@ export const getUserById = async (id) => {
 export const updateUser = async (id, updates) => {
   try {
     // Check if user exists
-    const existingUser = await db.select()
+    const existingUser = await db
+      .select()
       .from(users)
       .where(eq(users.id, id))
       .limit(1);
@@ -73,7 +77,8 @@ export const updateUser = async (id, updates) => {
     updates.updated_at = new Date();
 
     // Perform the update
-    const updatedUser = await db.update(users)
+    const updatedUser = await db
+      .update(users)
       .set(updates)
       .where(eq(users.id, id))
       .returning({
@@ -93,10 +98,11 @@ export const updateUser = async (id, updates) => {
 };
 
 // Delete user
-export const deleteUser = async (id) => {
+export const deleteUser = async id => {
   try {
     // Check if user exists
-    const existingUser = await db.select()
+    const existingUser = await db
+      .select()
       .from(users)
       .where(eq(users.id, id))
       .limit(1);
@@ -108,7 +114,8 @@ export const deleteUser = async (id) => {
     }
 
     // Delete the user
-    const deletedUser = await db.delete(users)
+    const deletedUser = await db
+      .delete(users)
       .where(eq(users.id, id))
       .returning({
         id: users.id,

@@ -3,6 +3,7 @@
 This guide explains how to run the application using Docker with different configurations for development and production environments.
 
 ## Table of Contents
+
 - [Prerequisites](#prerequisites)
 - [Architecture Overview](#architecture-overview)
 - [Development Setup (Neon Local)](#development-setup-neon-local)
@@ -30,6 +31,7 @@ This guide explains how to run the application using Docker with different confi
 ## Architecture Overview
 
 ### Development Environment
+
 ```
 ┌─────────────────┐         ┌──────────────────┐
 │   Application   │────────▶│   Neon Local     │
@@ -50,6 +52,7 @@ This guide explains how to run the application using Docker with different confi
 - No manual cleanup required
 
 ### Production Environment
+
 ```
 ┌─────────────────┐
 │   Application   │
@@ -116,6 +119,7 @@ docker-compose -f docker-compose.dev.yml ps
 ```
 
 You should see:
+
 - `acquisitions-neon-local` (Neon Local proxy)
 - `acquisitions-app-dev` (Application)
 
@@ -199,24 +203,24 @@ docker-compose -f docker-compose.prod.yml down
 
 ### Development Variables (`.env.development`)
 
-| Variable | Required | Description | Default |
-|----------|----------|-------------|---------|
-| `NEON_API_KEY` | ✅ Yes | Your Neon API key | - |
-| `NEON_PROJECT_ID` | ✅ Yes | Your Neon project ID | - |
-| `PARENT_BRANCH_ID` | ❌ No | Parent branch for ephemeral branches | Default branch |
-| `DELETE_BRANCH` | ❌ No | Delete branch on container stop | `true` |
-| `DATABASE_URL_DEV` | ❌ No | Database connection string | Auto-configured |
-| `PORT` | ❌ No | Application port | `3000` |
-| `LOG_LEVEL` | ❌ No | Logging level | `debug` |
+| Variable           | Required | Description                          | Default         |
+| ------------------ | -------- | ------------------------------------ | --------------- |
+| `NEON_API_KEY`     | ✅ Yes   | Your Neon API key                    | -               |
+| `NEON_PROJECT_ID`  | ✅ Yes   | Your Neon project ID                 | -               |
+| `PARENT_BRANCH_ID` | ❌ No    | Parent branch for ephemeral branches | Default branch  |
+| `DELETE_BRANCH`    | ❌ No    | Delete branch on container stop      | `true`          |
+| `DATABASE_URL_DEV` | ❌ No    | Database connection string           | Auto-configured |
+| `PORT`             | ❌ No    | Application port                     | `3000`          |
+| `LOG_LEVEL`        | ❌ No    | Logging level                        | `debug`         |
 
 ### Production Variables (`.env.production`)
 
-| Variable | Required | Description | Default |
-|----------|----------|-------------|---------|
-| `DATABASE_URL` | ✅ Yes | Neon Cloud database URL | - |
-| `NODE_ENV` | ✅ Yes | Environment name | `production` |
-| `PORT` | ❌ No | Application port | `3000` |
-| `LOG_LEVEL` | ❌ No | Logging level | `info` |
+| Variable       | Required | Description             | Default      |
+| -------------- | -------- | ----------------------- | ------------ |
+| `DATABASE_URL` | ✅ Yes   | Neon Cloud database URL | -            |
+| `NODE_ENV`     | ✅ Yes   | Environment name        | `production` |
+| `PORT`         | ❌ No    | Application port        | `3000`       |
+| `LOG_LEVEL`    | ❌ No    | Logging level           | `info`       |
 
 ---
 
@@ -284,6 +288,7 @@ docker-compose -f docker-compose.prod.yml exec app npm run db:migrate
 ### Issue: Neon Local container fails to start
 
 **Solution:** Verify your credentials in `.env`:
+
 ```bash
 # Check if environment variables are loaded
 docker-compose -f docker-compose.dev.yml config
@@ -292,28 +297,32 @@ docker-compose -f docker-compose.dev.yml config
 ### Issue: Application can't connect to database
 
 **Development:**
+
 - Ensure `DATABASE_URL_DEV` uses `neon-local` as hostname (not `localhost`)
 - Check Neon Local health: `docker-compose -f docker-compose.dev.yml logs neon-local`
 
 **Production:**
+
 - Verify `DATABASE_URL` is correct and accessible
 - Check network connectivity to Neon Cloud
 
 ### Issue: Port 5432 already in use
 
 **Solution:** Stop local PostgreSQL or change the port mapping:
+
 ```yaml
 # In docker-compose.dev.yml
 ports:
-  - '5433:5432'  # Use 5433 on host, 5432 in container
+  - '5433:5432' # Use 5433 on host, 5432 in container
 ```
 
 ### Issue: Self-signed certificate errors (JavaScript apps)
 
 If using `pg` or `postgres` library, add to your database connection config:
+
 ```javascript
 ssl: {
-  rejectUnauthorized: false
+  rejectUnauthorized: false;
 }
 ```
 
@@ -353,5 +362,6 @@ Verify the volume mounts in `docker-compose.dev.yml` and check `.neon_local/` di
 ## Support
 
 For issues related to:
+
 - **Neon Local/Cloud:** [Neon Discord](https://discord.gg/neon)
 - **Application:** Open an issue in the repository

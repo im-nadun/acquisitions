@@ -44,11 +44,12 @@ const securityMiddleware = async (req, res, next) => {
       });
       return res
         .status(403)
-        .json({ error: 'Forbidden', message: 'Automated requests are not allowed' });
+        .json({
+          error: 'Forbidden',
+          message: 'Automated requests are not allowed',
+        });
     }
-        
-        
-        
+
     if (decision.isDenied() && decision.reason.isShield()) {
       logger.warn('Shield Blocked request', {
         ip: req.ip,
@@ -60,11 +61,7 @@ const securityMiddleware = async (req, res, next) => {
         .status(403)
         .json({ error: 'Forbidden', message: 'Requests blocked' });
     }
-        
-        
-        
-    
-        
+
     if (decision.isDenied() && decision.reason.isRateLimit()) {
       logger.warn('Rate limit exceeded', {
         ip: req.ip,
@@ -75,10 +72,6 @@ const securityMiddleware = async (req, res, next) => {
         .status(403)
         .json({ error: 'Forbidden', message: 'Too many requests' });
     }
-        
-        
-        
-
 
     if (decision.isDenied()) {
       logger.warn('Rate limit exceeded', {
@@ -94,7 +87,10 @@ const securityMiddleware = async (req, res, next) => {
     console.error('Arcjet middleware error:', e);
     res
       .status(500)
-      .json({ error: 'Internal server error', message: 'Something went wrong with security middleware' });
+      .json({
+        error: 'Internal server error',
+        message: 'Something went wrong with security middleware',
+      });
   }
 };
 

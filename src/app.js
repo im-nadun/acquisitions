@@ -17,7 +17,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use(morgan('combined', {stream: {write: (message) => logger.info(message.trim())}}));
+app.use(
+  morgan('combined', {
+    stream: { write: message => logger.info(message.trim()) },
+  })
+);
 
 app.use(securityMiddleware);
 
@@ -28,10 +32,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/health', (req, res) => {
-  res.status(200).json({status: 'OK', timestamp: new Date().toISOString(), uptime: process.uptime() });
+  res
+    .status(200)
+    .json({
+      status: 'OK',
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime(),
+    });
 });
 
-app.get('/api',(req, res) => {
+app.get('/api', (req, res) => {
   res.status(200).json({ message: 'Acquisitions API is running!' });
 });
 
@@ -43,7 +53,7 @@ app.use('/api/users', usersRoutes);
 app.get('/api/profile', authenticate, (req, res) => {
   res.status(200).json({
     message: 'Profile data',
-    user: req.user // User info from JWT token
+    user: req.user, // User info from JWT token
   });
 });
 
@@ -51,12 +61,12 @@ app.get('/api/profile', authenticate, (req, res) => {
 app.get('/api/admin', authenticate, authorize('admin'), (req, res) => {
   res.status(200).json({
     message: 'Admin dashboard',
-    user: req.user
+    user: req.user,
   });
 });
 
 app.use((req, res) => {
-    res.status(404).json({ error: 'Route not found' });
-})
+  res.status(404).json({ error: 'Route not found' });
+});
 
 export default app;

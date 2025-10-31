@@ -3,6 +3,7 @@
 ## 🎯 What Was Fixed
 
 ### Bugs Fixed:
+
 1. ✅ Fixed validation logic (was checking `success` instead of `!success`)
 2. ✅ Fixed undefined `jwbtoken` → changed to `jwtToken`
 3. ✅ Added missing `await` in database query
@@ -10,6 +11,7 @@
 5. ✅ Fixed route typo (`'sign-up'` → `'/sign-up'`)
 
 ### Features Implemented:
+
 1. ✅ Complete **sign-in** functionality with password verification
 2. ✅ Complete **sign-out** functionality
 3. ✅ Authentication middleware to protect routes
@@ -24,6 +26,7 @@
 ### Public Endpoints (No authentication required)
 
 #### 1. Sign Up
+
 ```http
 POST /api/auth/sign-up
 Content-Type: application/json
@@ -37,6 +40,7 @@ Content-Type: application/json
 ```
 
 **Response:**
+
 ```json
 {
   "message": "User registered successfully",
@@ -48,11 +52,13 @@ Content-Type: application/json
   }
 }
 ```
-*Note: JWT token is set in HTTP-only cookie*
+
+_Note: JWT token is set in HTTP-only cookie_
 
 ---
 
 #### 2. Sign In
+
 ```http
 POST /api/auth/sign-in
 Content-Type: application/json
@@ -64,6 +70,7 @@ Content-Type: application/json
 ```
 
 **Response:**
+
 ```json
 {
   "message": "Signed in successfully",
@@ -75,19 +82,22 @@ Content-Type: application/json
   }
 }
 ```
-*Note: JWT token is set in HTTP-only cookie*
+
+_Note: JWT token is set in HTTP-only cookie_
 
 ---
 
 ### Protected Endpoints (Authentication required)
 
 #### 3. Sign Out
+
 ```http
 POST /api/auth/sign-out
 Cookie: token=<jwt-token>
 ```
 
 **Response:**
+
 ```json
 {
   "message": "Signed out successfully"
@@ -97,12 +107,14 @@ Cookie: token=<jwt-token>
 ---
 
 #### 4. Get Profile (Example)
+
 ```http
 GET /api/profile
 Cookie: token=<jwt-token>
 ```
 
 **Response:**
+
 ```json
 {
   "message": "Profile data",
@@ -117,12 +129,14 @@ Cookie: token=<jwt-token>
 ---
 
 #### 5. Admin Dashboard (Example - Admin only)
+
 ```http
 GET /api/admin
 Cookie: token=<jwt-token>
 ```
 
 **Response (if user is admin):**
+
 ```json
 {
   "message": "Admin dashboard",
@@ -135,6 +149,7 @@ Cookie: token=<jwt-token>
 ```
 
 **Response (if user is not admin):**
+
 ```json
 {
   "error": "Access denied",
@@ -149,6 +164,7 @@ Cookie: token=<jwt-token>
 ### How to Protect Routes
 
 #### 1. Require Authentication Only
+
 ```javascript
 import { authenticate } from '#middleware/auth.middleware.js';
 
@@ -159,6 +175,7 @@ router.get('/protected', authenticate, (req, res) => {
 ```
 
 #### 2. Require Specific Role(s)
+
 ```javascript
 import { authenticate, authorize } from '#middleware/auth.middleware.js';
 
@@ -168,9 +185,14 @@ router.get('/admin', authenticate, authorize('admin'), (req, res) => {
 });
 
 // Admin or moderator
-router.get('/moderate', authenticate, authorize('admin', 'moderator'), (req, res) => {
-  res.json({ message: 'Moderation panel' });
-});
+router.get(
+  '/moderate',
+  authenticate,
+  authorize('admin', 'moderator'),
+  (req, res) => {
+    res.json({ message: 'Moderation panel' });
+  }
+);
 ```
 
 ---
@@ -178,6 +200,7 @@ router.get('/moderate', authenticate, authorize('admin', 'moderator'), (req, res
 ## 🧪 Testing with cURL
 
 ### Sign Up
+
 ```bash
 curl -X POST http://localhost:3000/api/auth/sign-up \
   -H "Content-Type: application/json" \
@@ -185,6 +208,7 @@ curl -X POST http://localhost:3000/api/auth/sign-up \
 ```
 
 ### Sign In
+
 ```bash
 curl -X POST http://localhost:3000/api/auth/sign-in \
   -H "Content-Type: application/json" \
@@ -193,12 +217,14 @@ curl -X POST http://localhost:3000/api/auth/sign-in \
 ```
 
 ### Access Protected Route
+
 ```bash
 curl http://localhost:3000/api/profile \
   -b cookies.txt
 ```
 
 ### Sign Out
+
 ```bash
 curl -X POST http://localhost:3000/api/auth/sign-out \
   -b cookies.txt
@@ -226,15 +252,18 @@ src/
 ## 🎯 What Each File Does
 
 ### `auth.middleware.js` (NEW)
+
 - `authenticate()` - Verifies JWT token from cookie
 - `authorize(...roles)` - Checks user has required role
 
 ### `auth.controller.js` (FIXED)
+
 - `signup()` - Register new user
 - `signin()` - Login existing user
 - `signout()` - Clear auth cookie
 
 ### `auth.service.js` (ENHANCED)
+
 - `hashPassword()` - Hash password with bcrypt
 - `comparePassword()` - Verify password
 - `getUserByEmail()` - Find user by email
@@ -245,6 +274,7 @@ src/
 ## 🚀 Next Steps
 
 1. Run the server:
+
    ```bash
    npm run dev
    ```
